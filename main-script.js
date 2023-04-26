@@ -1,6 +1,7 @@
 import TextArea from "./modules/TextArea.js";
 import keyboard from "./modules/keyboard.js";
 import Button from "./modules/Button.js";
+import KeyboardArea from "./modules/keyboardArea.js";
 
 let lang = document.getElementsByTagName("html")[0].getAttribute("lang");// get language from html
 console.log(lang);
@@ -22,13 +23,31 @@ mainContainer.style.height = '70vh';
 mainContainer.style.border = '1px solid blue';
 mainContainer.style.margin = 'auto';
 mainContainer.style.marginTop = '10vh';
+mainContainer.style.display = 'flex';
+mainContainer.style.flexDirection = 'row';
+mainContainer.style.flexWrap = 'wrap';
+mainContainer.style.justifyContent = 'flex-start';
 document.body.append(mainContainer);
 
 mainContainer.insertAdjacentHTML("afterbegin",TextArea('textBlock','textArea'));
-let textBlock = document.getElementById('textBlock')
-mainContainer.insertAdjacentHTML("beforeend",Button('button',keyboard[0].id,keyboard[0].shiftEn,keyboard[0].en));
+let textBlock = document.getElementById('textBlock');
+mainContainer.insertAdjacentHTML("beforeend",KeyboardArea('keyboardBlock','keyboardArea'));
+let keyboardBlock = document.getElementById('keyboardBlock');
+//=================================================Make Kbd=================================================
+for(let i=0; i<keyboard.length; i++) {
+keyboardBlock.insertAdjacentHTML("beforeend",Button('button',keyboard[i].id,keyboard[i].shiftEn,keyboard[i].en));
+}
+let button = document.querySelectorAll('.button');
+console.log(' numbers butt =>'+button.length);
+for(let i=0; i<button.length; i++){
+    button[i].style.cssText += `grid-row: ${keyboard[i].row}/${keyboard[i].row+1}`;
+    button[i].addEventListener('click',()=>{
+        console.log('button id =>'+button[i].id);
+        textBlock.value += keyboard[button[i].id-1].en;
+    })
+}
 
-
+//=====================================================================================================
 document.onkeydown = (e) => {
     
     if(e.shiftKey && e.key ==='Alt'){

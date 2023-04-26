@@ -16,3 +16,44 @@ color: red;
 .textArea:focus {
     outline: none;
 }
+
+.keyboardArea{
+    display: grid;
+    /*justify-content: space-around;
+    align-content: space-around;*/
+    /*display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;*/
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 30vmin;
+    border: 1px solid yellowgreen;
+}
+
+
+
+
+.button{
+
+min-width: 5vmin;
+min-height: 5vmin;
+border: 2px solid rgb(102, 102, 188);
+border-radius: 10%;
+background-color: rgb(102, 102, 188);
+color:white;
+font-size: 2.5vmin;
+cursor: pointer;
+margin:0.5vmin;
+}
+.topInner{
+
+font-size: 0.6em;
+
+}
+
+.centralInner{
+    height: 40%;
+    padding-left: 40%;
+    
+}

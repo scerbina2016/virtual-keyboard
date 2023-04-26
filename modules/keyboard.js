@@ -522,7 +522,7 @@ const keyboard = [
         shiftRu:'Alt',
     },
     {
-        id: 58,
+        id: 59,
         row: 5,
         place: 4,
         en:'White space',
@@ -531,7 +531,7 @@ const keyboard = [
         shiftRu:'White space',
     },
     {
-        id: 59,
+        id: 60,
         row: 5,
         place: 5,
         en:'Alt',
@@ -540,7 +540,7 @@ const keyboard = [
         shiftRu:'Alt',
     },
     {
-        id: 60,
+        id: 61,
         row: 5,
         place: 6,
         en:'Ctrl',
@@ -549,7 +549,7 @@ const keyboard = [
         shiftRu:'Ctrl',
     },
     {
-        id: 61,
+        id: 62,
         row: 5,
         place: 7,
         en:'ArrLeft',
@@ -558,7 +558,7 @@ const keyboard = [
         shiftRu:'ArrLeft',
     },
     {
-        id: 62,
+        id: 63,
         row: 5,
         place: 8,
         en:'ArrDown',
@@ -567,7 +567,7 @@ const keyboard = [
         shiftRu:'ArrDown',
     },
     {
-        id: 63,
+        id: 64,
         row: 5,
         place: 9,
         en:'ArrRight',

@@ -3,8 +3,8 @@ const Button = (className, id, topInner, centralInner) => {
 
     const ButtonHtml = `
                         <div class="${className}" id="${id}" >
-                            <div>${topInner}</div>
-                            <div>${centralInner}</div>
+                            <div class="topInner">${topInner}</div>
+                            <div class="centralInner">${centralInner}</div>
                         </div>
                         `
 
