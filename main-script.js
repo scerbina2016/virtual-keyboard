@@ -2,6 +2,7 @@ import TextArea from "./modules/TextArea.js";
 import keyboard from "./modules/keyboard.js";
 import Button from "./modules/Button.js";
 import KeyboardArea from "./modules/KeyboardArea.js";
+import MakeKbd from "./modules/MakeKbd.js";
 
 let lang = document.getElementsByTagName("html")[0].getAttribute("lang");// get language from html
 console.log(lang);
@@ -13,7 +14,10 @@ localStorage.setItem('lang', lang);
 
 let currentText = '';
 //document.documentElement.setAttribute('text', currentText); any attribute make like this
-
+let shiftPressed = false;
+let controlPressed = false;
+let altPressed = false;
+let capsPressed = false;
 
 let mainContainer = document.createElement('div');
 mainContainer.className ='main-container';
@@ -34,7 +38,10 @@ let textBlock = document.getElementById('textBlock');
 mainContainer.insertAdjacentHTML("beforeend", 
     ` <div class='keyboardArea' id = 'keyboardBlock'></div>`
 );
-let keyboardBlock = document.getElementById('keyboardBlock');
+
+MakeKbd(lang, shiftPressed, capsPressed);
+
+/*let keyboardBlock = document.getElementById('keyboardBlock');
 //=================================================Make Kbd=================================================
 for(let i=0; i<keyboard.length; i++) {
 keyboardBlock.insertAdjacentHTML("beforeend",Button('button',keyboard[i].id,keyboard[i].shiftEn,keyboard[i].en));
@@ -50,11 +57,45 @@ for(let i=0; i<button.length; i++){
 }
 
 //=====================================================================================================
+*/
+
+
+let shiftCounter = 0;
+
+document.onkeydown =(e) =>{
+
+    if(e.shiftKey && !capsPressed){ shiftPressed = !shiftPressed};
+    MakeKbd(lang,false);
+
+}
+
+
 document.onkeydown = (e) => {
-    
+    /*if(e.shiftKey){ shiftPressed = false;
+        shiftCounter++;
+
+        console.log('shift keydown => ' + shiftPressed +' => '+shiftCounter);
+        MakeKbd(lang,shiftPressed);
+    } else { shiftPressed = true;
+        MakeKbd(lang,shiftPressed);
+
+    }*/
+
+
+    // capsLock here
+    if(e.key === 'CapsLock' && !capsPressed ){capsPressed = true;
+        MakeKbd(lang,capsPressed); // TODO in module
+    }else{capsPressed = false;
+        MakeKbd(lang,capsPressed); 
+    }
+    //============== capsLock end ==========================
     if(e.shiftKey && e.key ==='Alt'){
-    console.log('location =>' + e.location);
-        if(lang === 'ru'){lang = 'en'} else {lang = 'ru'};
+    
+    console.log('capsPressed =>' + capsPressed);
+        if(lang === 'ru'){lang = 'en'
+          MakeKbd(lang, shiftPressed, capsPressed);   
+        } else {lang = 'ru';
+          MakeKbd(lang, shiftPressed, capsPressed)};
         console.log('lang ==>' + lang);
         localStorage.setItem('lang', lang);
      };
@@ -85,4 +126,3 @@ window.onload = () => {
 
     
 }
-
