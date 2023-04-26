@@ -1,7 +1,7 @@
 import TextArea from "./modules/TextArea.js";
 import keyboard from "./modules/keyboard.js";
 import Button from "./modules/Button.js";
-import KeyboardArea from "./modules/keyboardArea.js";
+import KeyboardArea from "./modules/KeyboardArea.js";
 
 let lang = document.getElementsByTagName("html")[0].getAttribute("lang");// get language from html
 console.log(lang);
@@ -31,7 +31,9 @@ document.body.append(mainContainer);
 
 mainContainer.insertAdjacentHTML("afterbegin",TextArea('textBlock','textArea'));
 let textBlock = document.getElementById('textBlock');
-mainContainer.insertAdjacentHTML("beforeend",KeyboardArea('keyboardBlock','keyboardArea'));
+mainContainer.insertAdjacentHTML("beforeend", 
+    ` <div class='keyboardArea' id = 'keyboardBlock'></div>`
+);
 let keyboardBlock = document.getElementById('keyboardBlock');
 //=================================================Make Kbd=================================================
 for(let i=0; i<keyboard.length; i++) {
