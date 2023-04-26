@@ -1,7 +1,7 @@
 import TextArea from "./modules/TextArea.js";
 import keyboard from "./modules/keyboard.js";
 import Button from "./modules/Button.js";
-import KeyboardArea from "./modules/KeyboardArea.js";
+//import KeyboardArea from "./modules/KeyboardArea.js";
 
 let lang = document.getElementsByTagName("html")[0].getAttribute("lang");// get language from html
 console.log(lang);
