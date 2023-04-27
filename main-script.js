@@ -4,6 +4,7 @@ import Button from "./modules/Button.js";
 import KeyboardArea from "./modules/KeyboardArea.js";
 import MakeKbd from "./modules/MakeKbd.js";
 
+let butExist;
 let lang = document.getElementsByTagName("html")[0].getAttribute("lang");// get language from html
 console.log(lang);
 document.documentElement.setAttribute('lang','ru');// set language to html
@@ -39,7 +40,7 @@ mainContainer.insertAdjacentHTML("beforeend",
     ` <div class='keyboardArea' id = 'keyboardBlock'></div>`
 );
 
-MakeKbd(lang, shiftPressed, capsPressed);
+butExist = MakeKbd(lang, shiftPressed, capsPressed);
 
 /*let keyboardBlock = document.getElementById('keyboardBlock');
 //=================================================Make Kbd=================================================
@@ -63,14 +64,30 @@ for(let i=0; i<button.length; i++){
 let shiftCounter = 0;
 
 document.onkeydown =(e) =>{
-
+    
     if(e.shiftKey && !capsPressed){ shiftPressed = !shiftPressed};
-    MakeKbd(lang,false);
+    butExist = MakeKbd(lang,false);
+
+}
+
+document.onkeyup =(e) => { // =========== then key pull)up =============
+    
+    for(let i = 0; i<butExist.length; i++ ){
+        console.log( butExist[i].classList[1]);
+        console.log('e.key ==> '+e.key);
+        if(butExist[i].classList[1] == e.key.toLowerCase()){
+            console.log('its true ---------------------------------')
+          butExist[i].style.cssText +='background-color: rgb(102, 102, 188);'  
+        }
+    }
+
 
 }
 
 
+
 document.onkeydown = (e) => {
+   
     /*if(e.shiftKey){ shiftPressed = false;
         shiftCounter++;
 
@@ -84,18 +101,43 @@ document.onkeydown = (e) => {
 
     // capsLock here
     if(e.key === 'CapsLock' && !capsPressed ){capsPressed = true;
-        MakeKbd(lang,capsPressed); // TODO in module
+        butExist = MakeKbd(lang,capsPressed); // TODO in module
+        
+        
+
+
+
     }else{capsPressed = false;
-        MakeKbd(lang,capsPressed); 
+       butExist = MakeKbd(lang,capsPressed); 
+
+       
+
+
     }
     //============== capsLock end ==========================
-    if(e.shiftKey && e.key ==='Alt'){
     
+    // ============================ then key pressed change background
+    for(let i = 0; i<butExist.length; i++ ){
+        console.log( butExist[i].classList[1]);
+        console.log('e.key ==> '+e.key);
+        if(butExist[i].classList[1] == e.key.toLowerCase()){
+            console.log('its true ---------------------------------')
+          butExist[i].style.cssText +='background-color: rgb(17, 17, 137);'  
+        }
+    }
+// ============================ then key pressed change background
+    
+    
+    let caps = e.getModifierState && e.getModifierState('CapsLock');
+    console.log ('caps =========================================> ' + caps);
+
+    if(e.shiftKey && e.altKey){
+    console.log('We here ==========================');
     console.log('capsPressed =>' + capsPressed);
         if(lang === 'ru'){lang = 'en'
-          MakeKbd(lang, shiftPressed, capsPressed);   
+        butExist = MakeKbd(lang, shiftPressed, caps);   
         } else {lang = 'ru';
-          MakeKbd(lang, shiftPressed, capsPressed)};
+        butExist = MakeKbd(lang, shiftPressed, caps)};
         console.log('lang ==>' + lang);
         localStorage.setItem('lang', lang);
      };
@@ -103,7 +145,7 @@ document.onkeydown = (e) => {
         console.log(e.key + ' => '+e.key);
 }
 
-textBlock.addEventListener('keydown',(e)=>{
+textBlock.addEventListener('keypress',(e)=>{ //keydown
     console.log('location =>' + e.location);
     currentText = textBlock.value;
     document.documentElement.setAttribute('text', currentText);
