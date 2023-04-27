@@ -1,12 +1,9 @@
 import TextArea from "./modules/TextArea.js";
 import keyboard from "./modules/keyboard.js";
 import Button from "./modules/Button.js";
-<<<<<<< HEAD
 import KeyboardArea from "./modules/KeyboardArea.js";
 import MakeKbd from "./modules/MakeKbd.js";
-=======
-//import KeyboardArea from "./modules/KeyboardArea.js";
->>>>>>> 9c4888cea16cee9bfcab24c04b2f9739192ab235
+
 
 
 
