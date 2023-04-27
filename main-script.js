@@ -8,6 +8,8 @@ import MakeKbd from "./modules/MakeKbd.js";
 //import KeyboardArea from "./modules/KeyboardArea.js";
 >>>>>>> 9c4888cea16cee9bfcab24c04b2f9739192ab235
 
+
+
 let butExist;
 let lang = document.getElementsByTagName("html")[0].getAttribute("lang");// get language from html
 console.log(lang);
@@ -28,12 +30,12 @@ let mainContainer = document.createElement('div');
 mainContainer.className ='main-container';
 mainContainer.id = 'container';
 mainContainer.style.width ='90vw';
-mainContainer.style.height = '70vh';
+mainContainer.style.height = 'fit-content';
 mainContainer.style.border = '1px solid blue';
 mainContainer.style.margin = 'auto';
-mainContainer.style.marginTop = '10vh';
+mainContainer.style.marginTop = '1vw';
 mainContainer.style.display = 'flex';
-mainContainer.style.flexDirection = 'row';
+mainContainer.style.flexDirection = 'column';
 mainContainer.style.flexWrap = 'wrap';
 mainContainer.style.justifyContent = 'flex-start';
 document.body.append(mainContainer);
@@ -44,7 +46,7 @@ mainContainer.insertAdjacentHTML("beforeend",
     ` <div class='keyboardArea' id = 'keyboardBlock'></div>`
 );
 
-butExist = MakeKbd(lang, shiftPressed, capsPressed);
+butExist = MakeKbd(lang, shiftPressed, capsPressed, lang);
 
 /*let keyboardBlock = document.getElementById('keyboardBlock');
 //=================================================Make Kbd=================================================
@@ -70,7 +72,7 @@ let shiftCounter = 0;
 document.onkeydown =(e) =>{
     
     if(e.shiftKey && !capsPressed){ shiftPressed = !shiftPressed};
-    butExist = MakeKbd(lang,false);
+    butExist = MakeKbd(lang,false,lang);
 
 }
 
@@ -79,9 +81,12 @@ document.onkeyup =(e) => { // =========== then key pull)up =============
     for(let i = 0; i<butExist.length; i++ ){
         console.log( butExist[i].classList[1]);
         console.log('e.key ==> '+e.key);
-        if(butExist[i].classList[1] == e.key.toLowerCase()){
+        if(butExist[i].classList[1] == e.key.toLowerCase()){//TODO if control key dont work
             console.log('its true ---------------------------------')
           butExist[i].style.cssText +='background-color: rgb(102, 102, 188);'  
+        }
+        if(keyboard[i].type === 'control' && butExist[i].classList[1] == e.key){
+            butExist[i].style.cssText +='background-color: rgb(102, 102, 188);'
         }
     }
 
@@ -124,10 +129,15 @@ document.onkeydown = (e) => {
     for(let i = 0; i<butExist.length; i++ ){
         console.log( butExist[i].classList[1]);
         console.log('e.key ==> '+e.key);
-        if(butExist[i].classList[1] == e.key.toLowerCase()){
+        if(butExist[i].classList[1] == e.key.toLowerCase()){//TODO
             console.log('its true ---------------------------------')
           butExist[i].style.cssText +='background-color: rgb(17, 17, 137);'  
         }
+        if(keyboard[i].type === 'control' && butExist[i].classList[1] == e.key){
+            butExist[i].style.cssText +='background-color: rgb(17, 17, 137);'
+        }
+
+
     }
 // ============================ then key pressed change background
     
