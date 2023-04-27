@@ -61,6 +61,8 @@ font-size: 0.6em;
 
 .centralInner{
     height: 40%;
-    padding-left: 40%;
+    /*padding-left: 40%;*/
+    width: 100%;
+    text-align: center;
     
 }

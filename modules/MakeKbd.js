@@ -9,7 +9,6 @@ keyboardBlock.innerHTML = '';
 //=================================================Make Kbd=================================================
 //keyboardBlock.removeChild('button');
 for(let i=0; i<keyboard.length; i++) {
-console.log ('shiftPressed from MakeKbd => '+shiftPressed);
         if(shiftPressed || capsPressed) {
             if(lang === 'en'){
                 keyboardBlock.insertAdjacentHTML("beforeend",Button('button',keyboard[i].id,keyboard[i].en,keyboard[i].shiftEn));
@@ -53,6 +52,9 @@ for(let i=0; i<button.length; i++){
     
 
 }
+
+return button;
+
 }
 
 export default MakeKbd;

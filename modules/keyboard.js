@@ -5,8 +5,9 @@ const keyboard = [
         place: 1,
         en:'`',
         shiftEn:'~',
-        ru:'ё',
-        shiftRu:'Ё',
+        ru:'Ё',
+        shiftRu:'~',
+        type:'leter'
     },
     {
         id: 2,
@@ -16,6 +17,7 @@ const keyboard = [
         shiftEn:'!',
         ru:'1',
         shiftRu:'!',
+        type:'number',
     },
     {
         id: 3,
@@ -25,6 +27,7 @@ const keyboard = [
         shiftEn:'@',
         ru:'2',
         shiftRu:'"',
+        type:'number',
     },
     {
         id: 4,
@@ -34,6 +37,7 @@ const keyboard = [
         shiftEn:'#',
         ru:'3',
         shiftRu:'№',
+        type:'number',
     },
     {
         id: 5,
@@ -43,6 +47,7 @@ const keyboard = [
         shiftEn:'$',
         ru:'4',
         shiftRu:';',
+        type:'number',
     },
     {
         id: 6,
@@ -52,6 +57,7 @@ const keyboard = [
         shiftEn:'%',
         ru:'5',
         shiftRu:'%',
+        type:'number',
     },
     {
         id: 7,
@@ -61,6 +67,7 @@ const keyboard = [
         shiftEn:'^',
         ru:'6',
         shiftRu:':',
+        type:'number',
     },
     {
         id: 8,
@@ -70,6 +77,7 @@ const keyboard = [
         shiftEn:'&',
         ru:'7',
         shiftRu:'?',
+        type:'number',
     },
     {
         id: 9,
@@ -79,6 +87,7 @@ const keyboard = [
         shiftEn:'*',
         ru:'8',
         shiftRu:'*',
+        type:'number',
     },
     {
         id: 10,
@@ -88,6 +97,7 @@ const keyboard = [
         shiftEn:'(',
         ru:'9',
         shiftRu:'(',
+        type:'number',
     },
     {
         id: 11,
@@ -97,6 +107,7 @@ const keyboard = [
         shiftEn:')',
         ru:'0',
         shiftRu:')',
+        type:'number',
     },
     {
         id: 12,
@@ -106,6 +117,7 @@ const keyboard = [
         shiftEn:'_',
         ru:'-',
         shiftRu:'_',
+        type:'number',
     },
     {
         id: 13,
@@ -115,6 +127,7 @@ const keyboard = [
         shiftEn:'+',
         ru:'=',
         shiftRu:'+',
+        type:'number',
     },
     {
         id: 14,
@@ -124,6 +137,7 @@ const keyboard = [
         shiftEn:'Backspace',
         ru:'Backspace',
         shiftRu:'Backspace',
+        type:'control',
     },
     {
         id: 15,
@@ -133,6 +147,7 @@ const keyboard = [
         shiftEn:'Tab',
         ru:'Tab',
         shiftRu:'Tab',
+        type:'control',
     },
     {
         id: 16,
@@ -142,6 +157,7 @@ const keyboard = [
         shiftEn:'Q',
         ru:'й',
         shiftRu:'Й',
+        type:'leter',
     },
     {
         id: 17,
@@ -151,6 +167,7 @@ const keyboard = [
         shiftEn:'W',
         ru:'ц',
         shiftRu:'Ц',
+        type:'leter',
     },
     {
         id: 18,
@@ -160,6 +177,7 @@ const keyboard = [
         shiftEn:'E',
         ru:'у',
         shiftRu:'У',
+        type:'leter',
     },
     {
         id: 19,
@@ -169,6 +187,7 @@ const keyboard = [
         shiftEn:'R',
         ru:'к',
         shiftRu:'К',
+        type:'leter',
     },
     {
         id: 20,
@@ -178,6 +197,7 @@ const keyboard = [
         shiftEn:'T',
         ru:'е',
         shiftRu:'Е',
+        type:'leter',
     },
     {
         id: 21,
@@ -187,6 +207,7 @@ const keyboard = [
         shiftEn:'Y',
         ru:'н',
         shiftRu:'Н',
+        type:'leter',
     },
     {
         id: 22,
@@ -196,6 +217,7 @@ const keyboard = [
         shiftEn:'U',
         ru:'г',
         shiftRu:'Г',
+        type:'leter',
     },
     {
         id: 23,
@@ -205,6 +227,7 @@ const keyboard = [
         shiftEn:'I',
         ru:'ш',
         shiftRu:'Ш',
+        type:'leter',
     },
     {
         id: 24,
@@ -214,6 +237,7 @@ const keyboard = [
         shiftEn:'O',
         ru:'щ',
         shiftRu:'Щ',
+        type:'leter',
     },
     {
         id: 25,
@@ -223,6 +247,7 @@ const keyboard = [
         shiftEn:'P',
         ru:'з',
         shiftRu:'З',
+        type:'leter',
     },
     {
         id: 26,
@@ -232,6 +257,7 @@ const keyboard = [
         shiftEn:'{',
         ru:'х',
         shiftRu:'Х',
+        type:'leter',
     },
     {
         id: 27,
@@ -241,6 +267,7 @@ const keyboard = [
         shiftEn:'}',
         ru:'ъ',
         shiftRu:'Ъ',
+        type:'leter',
     },
     {
         id: 28,
@@ -250,15 +277,17 @@ const keyboard = [
         shiftEn:'|',
         ru:'\\',
         shiftRu:'/',
+        type:'leter',
     },
     {
         id: 29,
         row: 2,
         place: 15,
-        en:'DEL',
-        shiftEn:'DEL',
-        ru:'DEL',
-        shiftRu:'DEL',
+        en:'Delete',
+        shiftEn:'Delete',
+        ru:'Delete',
+        shiftRu:'Delete',
+        type:'control',
     },
     {
         id: 30,
@@ -268,6 +297,7 @@ const keyboard = [
         shiftEn:'Caps Lock',
         ru:'Caps Lock',
         shiftRu:'Caps Lock',
+        type:'control',
     },
     {
         id: 31,
@@ -277,6 +307,7 @@ const keyboard = [
         shiftEn:'A',
         ru:'ф',
         shiftRu:'Ф',
+        type:'leter',
     },
     {
         id: 32,
@@ -286,6 +317,7 @@ const keyboard = [
         shiftEn:'S',
         ru:'ы',
         shiftRu:'Ы',
+        type:'leter',
     },
     {
         id: 33,
@@ -295,6 +327,7 @@ const keyboard = [
         shiftEn:'D',
         ru:'в',
         shiftRu:'В',
+        type:'leter',
     },
     {
         id: 34,
@@ -304,6 +337,7 @@ const keyboard = [
         shiftEn:'F',
         ru:'а',
         shiftRu:'А',
+        type:'leter',
     },
     {
         id: 35,
@@ -313,6 +347,7 @@ const keyboard = [
         shiftEn:'G',
         ru:'п',
         shiftRu:'П',
+        type:'leter',
     },
     {
         id: 36,
@@ -322,6 +357,7 @@ const keyboard = [
         shiftEn:'H',
         ru:'р',
         shiftRu:'Р',
+        type:'leter',
     },
     {
         id: 37,
@@ -331,6 +367,7 @@ const keyboard = [
         shiftEn:'J',
         ru:'о',
         shiftRu:'О',
+        type:'leter',
     },
     {
         id: 38,
@@ -340,6 +377,7 @@ const keyboard = [
         shiftEn:'K',
         ru:'л',
         shiftRu:'Л',
+        type:'leter',
     },
     {
         id: 39,
@@ -349,6 +387,7 @@ const keyboard = [
         shiftEn:'L',
         ru:'д',
         shiftRu:'Д',
+        type:'leter',
     },
     {
         id: 40,
@@ -358,6 +397,7 @@ const keyboard = [
         shiftEn:':',
         ru:'ж',
         shiftRu:'Ж',
+        type:'leter',
     },
     {
         id: 41,
@@ -367,15 +407,17 @@ const keyboard = [
         shiftEn:'"',
         ru:'э',
         shiftRu:'Э',
+        type:'leter',
     },
     {
         id: 42,
         row: 3,
         place: 13,
-        en:'ENTER',
-        shiftEn:'ENTER',
-        ru:'ENTER',
-        shiftRu:'ENTER',
+        en:'Enter',
+        shiftEn:'Enter',
+        ru:'Enter',
+        shiftRu:'Enter',
+        type:'control',
     },
     {
         id: 43,
@@ -385,6 +427,7 @@ const keyboard = [
         shiftEn:'Shift',
         ru:'Shift',
         shiftRu:'Shift',
+        type:'control',
     },
     {
         id: 44,
@@ -394,6 +437,7 @@ const keyboard = [
         shiftEn:'Z',
         ru:'я',
         shiftRu:'Я',
+        type:'leter',
     },
     {
         id: 45,
@@ -403,6 +447,7 @@ const keyboard = [
         shiftEn:'X',
         ru:'ч',
         shiftRu:'Ч',
+        type:'leter',
     },
     {
         id: 46,
@@ -412,6 +457,7 @@ const keyboard = [
         shiftEn:'C',
         ru:'с',
         shiftRu:'С',
+        type:'leter',
     },
     {
         id: 47,
@@ -421,6 +467,7 @@ const keyboard = [
         shiftEn:'V',
         ru:'м',
         shiftRu:'М',
+        type:'leter',
     },
     {
         id: 48,
@@ -430,6 +477,7 @@ const keyboard = [
         shiftEn:'B',
         ru:'и',
         shiftRu:'И',
+        type:'leter',
     },
     {
         id: 49,
@@ -439,6 +487,7 @@ const keyboard = [
         shiftEn:'N',
         ru:'т',
         shiftRu:'Т',
+        type:'leter',
     },
     {
         id: 50,
@@ -448,6 +497,7 @@ const keyboard = [
         shiftEn:'M',
         ru:'ь',
         shiftRu:'Ь',
+        type:'leter',
     },
     {
         id: 51,
@@ -457,6 +507,7 @@ const keyboard = [
         shiftEn:'<',
         ru:'б',
         shiftRu:'Б',
+        type:'leter',
     },
     {
         id: 52,
@@ -466,6 +517,7 @@ const keyboard = [
         shiftEn:'>',
         ru:'ю',
         shiftRu:'Ю',
+        type:'leter',
     },
     {
         id: 53,
@@ -475,15 +527,17 @@ const keyboard = [
         shiftEn:'?',
         ru:'.',
         shiftRu:',',
+        type:'leter',
     },
     {
         id: 54,
         row: 4,
         place: 12,
-        en:'ArrUp',
-        shiftEn:'ArrUp',
-        ru:'ArrUp',
-        shiftRu:'ArrUp',
+        en:'ArrowUp',
+        shiftEn:'ArrowUp',
+        ru:'ArrowUp',
+        shiftRu:'ArrowUp',
+        type:'control',
     },
     {
         id: 55,
@@ -493,6 +547,7 @@ const keyboard = [
         shiftEn:'Shift',
         ru:'Shift',
         shiftRu:'Shift',
+        type:'control',
     },
     {
         id: 56,
@@ -502,6 +557,7 @@ const keyboard = [
         shiftEn:'Ctrl',
         ru:'Ctrl',
         shiftRu:'Ctrl',
+        type:'control',
     },
     {
         id: 57,
@@ -511,6 +567,7 @@ const keyboard = [
         shiftEn:'Win',
         ru:'Win',
         shiftRu:'Win',
+        type:'control',
     },
     {
         id: 58,
@@ -520,6 +577,7 @@ const keyboard = [
         shiftEn:'Alt',
         ru:'Alt',
         shiftRu:'Alt',
+        type:'control',
     },
     {
         id: 59,
@@ -529,6 +587,7 @@ const keyboard = [
         shiftEn:'White space',
         ru:'White space',
         shiftRu:'White space',
+        type:'leter',
     },
     {
         id: 60,
@@ -538,6 +597,7 @@ const keyboard = [
         shiftEn:'Alt',
         ru:'Alt',
         shiftRu:'Alt',
+        type:'control',
     },
     {
         id: 61,
@@ -547,33 +607,37 @@ const keyboard = [
         shiftEn:'Ctrl',
         ru:'Ctrl',
         shiftRu:'Ctrl',
+        type:'control',
     },
     {
         id: 62,
         row: 5,
         place: 7,
-        en:'ArrLeft',
-        shiftEn:'ArrLeft',
-        ru:'ArrLeft',
-        shiftRu:'ArrLeft',
+        en:'ArrowLeft',
+        shiftEn:'ArrowLeft',
+        ru:'ArrowLeft',
+        shiftRu:'ArrowLeft',
+        type:'control',
     },
     {
         id: 63,
         row: 5,
         place: 8,
-        en:'ArrDown',
-        shiftEn:'ArrDown',
-        ru:'ArrDown',
-        shiftRu:'ArrDown',
+        en:'ArrowDown',
+        shiftEn:'ArrowDown',
+        ru:'ArrowDown',
+        shiftRu:'ArrowDown',
+        type:'control',
     },
     {
         id: 64,
         row: 5,
         place: 9,
-        en:'ArrRight',
-        shiftEn:'ArrRight',
-        ru:'ArrRight',
-        shiftRu:'ArrRight',
+        en:'ArrowRight',
+        shiftEn:'ArrowRight',
+        ru:'ArrowRight',
+        shiftRu:'ArrowRight',
+        type:'control',
     },
     
 
