@@ -1,7 +1,7 @@
 import keyboard from "./keyboard.js";
 import Button from "./Button.js";
 
-const MakeKbd = (lang, shiftPressed, capsPressed, controlPressed, altPressed) => {
+const MakeKbd = (lang, shiftPressed, capsPressed) => {
 
 
 let keyboardBlock = document.getElementById('keyboardBlock');
@@ -11,17 +11,17 @@ keyboardBlock.innerHTML = '';
 for(let i=0; i<keyboard.length; i++) {
         if(shiftPressed || capsPressed) {
             if(lang === 'en'){
-                keyboardBlock.insertAdjacentHTML("beforeend",Button('button',keyboard[i].id,keyboard[i].en,keyboard[i].shiftEn));
+                keyboardBlock.insertAdjacentHTML("beforeend",Button('button',keyboard[i].id,keyboard[i].en,keyboard[i].shiftEn,lang.toUpperCase()));
             } else {
-                keyboardBlock.insertAdjacentHTML("beforeend",Button('button',keyboard[i].id,keyboard[i].ru,keyboard[i].shiftRu));
+                keyboardBlock.insertAdjacentHTML("beforeend",Button('button',keyboard[i].id,keyboard[i].ru,keyboard[i].shiftRu, lang.toUpperCase()));
             }
 
         } else {
 
     if(lang === 'en'){
-        keyboardBlock.insertAdjacentHTML("beforeend",Button('button',keyboard[i].id,keyboard[i].shiftEn,keyboard[i].en));
+        keyboardBlock.insertAdjacentHTML("beforeend",Button('button',keyboard[i].id,keyboard[i].shiftEn,keyboard[i].en, lang.toUpperCase()));
     } else {
-        keyboardBlock.insertAdjacentHTML("beforeend",Button('button',keyboard[i].id,keyboard[i].shiftRu,keyboard[i].ru));
+        keyboardBlock.insertAdjacentHTML("beforeend",Button('button',keyboard[i].id,keyboard[i].shiftRu,keyboard[i].ru,lang.toUpperCase()));
     }
 }
 
