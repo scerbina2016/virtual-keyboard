@@ -3,6 +3,7 @@ import keyboard from "./modules/keyboard.js";
 import Button from "./modules/Button.js";
 import KeyboardArea from "./modules/KeyboardArea.js";
 import MakeKbd from "./modules/MakeKbd.js";
+import langTest from "./modules/langTest.js";
 
 
 
@@ -43,7 +44,7 @@ mainContainer.insertAdjacentHTML("beforeend",
     ` <div class='keyboardArea' id = 'keyboardBlock'></div>`
 );
 
-butExist = MakeKbd(lang, shiftPressed, capsPressed, lang);
+butExist = MakeKbd(lang, shiftPressed, capsPressed);
 
 /*let keyboardBlock = document.getElementById('keyboardBlock');
 //=================================================Make Kbd=================================================
@@ -67,17 +68,21 @@ for(let i=0; i<button.length; i++){
 let shiftCounter = 0;
 
 document.onkeydown =(e) =>{
+    console.log('key code = > '+ e.code);
+    lang = langTest(e.key, lang);
+    if(e.shiftKey){
+        console.log('shift pressed')
+    butExist = MakeKbd(lang,true);
+    };
     
-    if(e.shiftKey && !capsPressed){ shiftPressed = !shiftPressed};
-    butExist = MakeKbd(lang,false,lang);
 
 }
 
 document.onkeyup =(e) => { // =========== then key pull)up =============
-    
+    lang = langTest(e.key, lang);
     for(let i = 0; i<butExist.length; i++ ){
-        console.log( butExist[i].classList[1]);
-        console.log('e.key ==> '+e.key);
+        //console.log( butExist[i].classList[1]);
+        //console.log('e.key ==> '+e.key);
         if(butExist[i].classList[1] == e.key.toLowerCase()){//TODO if control key dont work
             console.log('its true ---------------------------------')
           butExist[i].style.cssText +='background-color: rgb(102, 102, 188);'  
@@ -93,7 +98,7 @@ document.onkeyup =(e) => { // =========== then key pull)up =============
 
 
 document.onkeydown = (e) => {
-   
+    lang = langTest(e.key, lang);
     /*if(e.shiftKey){ shiftPressed = false;
         shiftCounter++;
 
@@ -124,8 +129,8 @@ document.onkeydown = (e) => {
     
     // ============================ then key pressed change background
     for(let i = 0; i<butExist.length; i++ ){
-        console.log( butExist[i].classList[1]);
-        console.log('e.key ==> '+e.key);
+        //console.log( butExist[i].classList[1]);
+        //console.log('e.key ==> '+e.key);
         if(butExist[i].classList[1] == e.key.toLowerCase()){//TODO
             console.log('its true ---------------------------------')
           butExist[i].style.cssText +='background-color: rgb(17, 17, 137);'  
@@ -143,6 +148,7 @@ document.onkeydown = (e) => {
     console.log ('caps =========================================> ' + caps);
 
     if(e.shiftKey && e.altKey){
+        lang = langTest(e.key, lang);
     console.log('We here ==========================');
     console.log('capsPressed =>' + capsPressed);
         if(lang === 'ru'){lang = 'en'

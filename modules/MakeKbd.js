@@ -1,8 +1,8 @@
 import keyboard from "./keyboard.js";
 import Button from "./Button.js";
+import langTest from "./langTest.js";
 
 const MakeKbd = (lang, shiftPressed, capsPressed) => {
-
 
 let keyboardBlock = document.getElementById('keyboardBlock');
 keyboardBlock.innerHTML = '';
