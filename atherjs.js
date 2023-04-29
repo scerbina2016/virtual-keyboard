@@ -50,6 +50,11 @@ let textBlock = document.getElementById('textBlock');
 mainContainer.insertAdjacentHTML("beforeend", 
     ` <div class='keyboardArea' id = 'keyboardBlock'></div>`
 );
+
+mainContainer.insertAdjacentHTML("afterbegin",
+    `<p class="prompt">switching language "Shift"+"Alt" or button "Lang" (only virtual keyboard)`
+
+);
 console.log('first run =>>> ')
 console.log('lang =>>> ' +lang)
 console.log('first lang =>'+localStorage.getItem('lang'));
@@ -99,6 +104,8 @@ document.onkeydown =(e) =>{
 
         } else
         if(keyboard[i].type === 'control' && butExist[i].classList[1] == e.code){
+            console.log('classList  '+butExist[i].classList[1]);
+
             butExist[i].style.cssText +='background-color: rgb(17, 17, 137);'
             setTimeout(()=> butExist[i].style.cssText +='background-color: rgb(102, 102, 188);', 100);
         }

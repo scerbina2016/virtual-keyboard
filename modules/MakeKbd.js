@@ -3,7 +3,8 @@ import Button from "./Button.js";
 import langTest from "./langTest.js";
 
 const MakeKbd = (lang, shiftPressed, capsPressed) => {
-
+let shiftCounter =0;
+console.log('caps pressed =>'+capsPressed);
 let keyboardBlock = document.getElementById('keyboardBlock');
 keyboardBlock.innerHTML = '';
 //localStorage.setItem('shift', shiftPressed);
@@ -14,15 +15,15 @@ keyboardBlock.innerHTML = '';
 //=================================================Make Kbd=================================================
 //keyboardBlock.removeChild('button');
 for(let i=0; i<keyboard.length; i++) {
-        if(shiftPressed || capsPressed) {
+    if(shiftPressed || capsPressed) {//   || capsPressed
 
-            if(lang === 'en'){
-                keyboardBlock.insertAdjacentHTML("beforeend",Button('button',keyboard[i].id,keyboard[i].en,keyboard[i].shiftEn,lang.toUpperCase()));
-            } else {
-                keyboardBlock.insertAdjacentHTML("beforeend",Button('button',keyboard[i].id,keyboard[i].ru,keyboard[i].shiftRu, lang.toUpperCase()));
-            }
-
+        if(lang === 'en'){
+            keyboardBlock.insertAdjacentHTML("beforeend",Button('button',keyboard[i].id,keyboard[i].en,keyboard[i].shiftEn,lang.toUpperCase()));
         } else {
+            keyboardBlock.insertAdjacentHTML("beforeend",Button('button',keyboard[i].id,keyboard[i].ru,keyboard[i].shiftRu, lang.toUpperCase()));
+        }
+
+    } else {
 
     if(lang === 'en'){
         keyboardBlock.insertAdjacentHTML("beforeend",Button('button',keyboard[i].id,keyboard[i].shiftEn,keyboard[i].en, lang.toUpperCase()));
@@ -41,41 +42,55 @@ console.log(' numbers butt =>'+button.length);
 for(let i=0; i<button.length; i++){
     button[i].style.cssText += `grid-row: ${keyboard[i].row}/${keyboard[i].row+1}`;
     button[i].addEventListener('click',()=>{
-        console.log('button id =>'+button[i].id);
-        console.log('lang => '+ lang);
-
+       
         if(shiftPressed || capsPressed){
             if (lang === 'en'){
-                console.log('if caps or shift true & en ==> ');
-                console.log('shiftPressed ==> ' +shiftPressed);
-                console.log('capsPressed ==> ' +capsPressed);
-                textBlock.value += keyboard[button[i].id-1].shiftEn}
-                else {
-                console.log('if caps or shift true & ru ==> ');
-                console.log('shiftPressed ==> ' +shiftPressed);
-                console.log('capsPressed ==> ' +capsPressed);
-                    
-                    textBlock.value += keyboard[button[i].id-1].shiftRu};  
+                
 
+
+                if(keyboard[button[i].id-1].type != 'control'){
+               textBlock.value += keyboard[button[i].id-1].shiftEn};
+            
+                button = MakeKbd(lang,false, capsPressed)
+                if(capsPressed){document.querySelector('.CapsLock').style.cssText +='background-color: rgb(17, 17, 137);'}    
+            
+            }else {
+                
+                if(keyboard[button[i].id-1].type != 'control'){   
+                textBlock.value += keyboard[button[i].id-1].shiftRu};
+
+                 button = MakeKbd(lang,false, capsPressed)
+                 if(capsPressed){document.querySelector('.CapsLock').style.cssText +='background-color: rgb(17, 17, 137);'}  
+            };  
+
+            
         } else {
 
         if (lang === 'en'){
-            console.log('if caps and shift false & en ==> ');
-            console.log('shiftPressed ==> ' +shiftPressed);
-            console.log('capsPressed ==> ' +capsPressed);
-            textBlock.value += keyboard[button[i].id-1].en}
-        else {
-            console.log('if caps and shift false & ru ==> ');
-            console.log('shiftPressed ==> ' +shiftPressed);
-            console.log('capsPressed ==> ' +capsPressed);
             
-            textBlock.value += keyboard[button[i].id-1].ru};
+
+            if(keyboard[button[i].id-1].type != 'control'){   
+            textBlock.value += keyboard[button[i].id-1].en};
+        
         }
+            
+        else {
+            
+            if(keyboard[button[i].id-1].type != 'control'){ 
+            textBlock.value += keyboard[button[i].id-1].ru}
+        };
+
+        }
+
+        if(keyboard[button[i].id-1].en === 'Enter'){
+            textBlock.value += '\r\n';
+        }
+
+
     })
     
-
 }
-let langBut = document.getElementById('65');
+let langBut = document.getElementById('65');// TODO for Shift and Control
 console.log(langBut);
 langBut.addEventListener('click', ()=>{
     
@@ -83,13 +98,50 @@ langBut.addEventListener('click', ()=>{
 
         lang = 'ru';
         button = MakeKbd(lang,shiftPressed, capsPressed);
-        
+        if(capsPressed){document.querySelector('.CapsLock').style.cssText +='background-color: rgb(17, 17, 137);'}
       } else {
         lang = 'en';
         button = MakeKbd(lang,shiftPressed, capsPressed);   
-        
+        if(capsPressed){document.querySelector('.CapsLock').style.cssText +='background-color: rgb(17, 17, 137);'}
       } 
 })
+// ========================== for shift  =========================
+let shiftLeft =document.querySelector('.ShiftLeft');
+console.log(shiftLeft);
+shiftLeft.addEventListener('click', (e) =>{
+  button = MakeKbd(lang,true, capsPressed);  
+  document.querySelector('.ShiftLeft').style.cssText +='background-color: rgb(17, 17, 137)'; 
+    
+})
+
+let shiftRight =document.querySelector('.ShiftRight');
+console.log(shiftRight);
+shiftRight.addEventListener('click', (e) =>{
+    button = MakeKbd(lang,true, capsPressed)
+    document.querySelector('.ShiftRight').style.cssText +='background-color: rgb(17, 17, 137)';
+})
+// =========================== for caps ===========================
+let caps = document.querySelector('.CapsLock');
+console.log(caps);
+caps.addEventListener('click',(e)=>{
+    capsPressed =!capsPressed;
+    console.log(caps.style.cssText);
+    
+    button = MakeKbd(lang,shiftPressed, capsPressed);
+    caps = document.querySelector('.CapsLock');
+    if(capsPressed){
+        caps.style.cssText +='background-color: rgb(17, 17, 137);';
+    } else {
+        caps.style.cssText +='background-color: rgb(102, 102, 188);'; 
+    }
+})
+// ======================= for space ==============================
+let space = document.querySelector('.Space');
+space.addEventListener('click',()=>{
+    textBlock.value +=' ';
+})
+
+
 return button;
 
 }
