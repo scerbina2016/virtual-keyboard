@@ -6,10 +6,16 @@ const MakeKbd = (lang, shiftPressed, capsPressed) => {
 
 let keyboardBlock = document.getElementById('keyboardBlock');
 keyboardBlock.innerHTML = '';
+//localStorage.setItem('shift', shiftPressed);
+//localStorage.setItem('caps', capsPressed);
+//localStorage.setItem('lang', lang);
+
+
 //=================================================Make Kbd=================================================
 //keyboardBlock.removeChild('button');
 for(let i=0; i<keyboard.length; i++) {
         if(shiftPressed || capsPressed) {
+
             if(lang === 'en'){
                 keyboardBlock.insertAdjacentHTML("beforeend",Button('button',keyboard[i].id,keyboard[i].en,keyboard[i].shiftEn,lang.toUpperCase()));
             } else {
@@ -30,6 +36,7 @@ for(let i=0; i<keyboard.length; i++) {
 //shiftPressed
 
 let button = document.querySelectorAll('.button');
+
 console.log(' numbers butt =>'+button.length);
 for(let i=0; i<button.length; i++){
     button[i].style.cssText += `grid-row: ${keyboard[i].row}/${keyboard[i].row+1}`;
@@ -39,20 +46,50 @@ for(let i=0; i<button.length; i++){
 
         if(shiftPressed || capsPressed){
             if (lang === 'en'){
+                console.log('if caps or shift true & en ==> ');
+                console.log('shiftPressed ==> ' +shiftPressed);
+                console.log('capsPressed ==> ' +capsPressed);
                 textBlock.value += keyboard[button[i].id-1].shiftEn}
-                else {textBlock.value += keyboard[button[i].id-1].shiftRu};  
+                else {
+                console.log('if caps or shift true & ru ==> ');
+                console.log('shiftPressed ==> ' +shiftPressed);
+                console.log('capsPressed ==> ' +capsPressed);
+                    
+                    textBlock.value += keyboard[button[i].id-1].shiftRu};  
 
         } else {
 
         if (lang === 'en'){
-        textBlock.value += keyboard[button[i].id-1].en}
-        else {textBlock.value += keyboard[button[i].id-1].ru};
+            console.log('if caps and shift false & en ==> ');
+            console.log('shiftPressed ==> ' +shiftPressed);
+            console.log('capsPressed ==> ' +capsPressed);
+            textBlock.value += keyboard[button[i].id-1].en}
+        else {
+            console.log('if caps and shift false & ru ==> ');
+            console.log('shiftPressed ==> ' +shiftPressed);
+            console.log('capsPressed ==> ' +capsPressed);
+            
+            textBlock.value += keyboard[button[i].id-1].ru};
         }
     })
     
 
 }
+let langBut = document.getElementById('65');
+console.log(langBut);
+langBut.addEventListener('click', ()=>{
+    
+    if(lang == 'en'){
 
+        lang = 'ru';
+        button = MakeKbd(lang,shiftPressed, capsPressed);
+        
+      } else {
+        lang = 'en';
+        button = MakeKbd(lang,shiftPressed, capsPressed);   
+        
+      } 
+})
 return button;
 
 }

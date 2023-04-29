@@ -587,7 +587,7 @@ const keyboard = [
         shiftEn:' ',
         ru:' ',
         shiftRu:' ',
-        type:'leter',
+        type:'control',
     },
     {
         id: 60,

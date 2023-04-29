@@ -9,12 +9,17 @@ import langTest from "./modules/langTest.js";
 
 
 let butExist;
-let lang = document.getElementsByTagName("html")[0].getAttribute("lang");// get language from html
-console.log(lang);
-document.documentElement.setAttribute('lang','ru');// set language to html
 
-lang = document.getElementsByTagName("html")[0].getAttribute("lang");
+
+
+let lang = document.getElementsByTagName("html")[0].getAttribute("lang");// get language from html
+console.log('first rum lang => '+lang);
+
+//document.documentElement.setAttribute('lang','ru');// set language to html
+
+//lang = document.getElementsByTagName("html")[0].getAttribute("lang");
 localStorage.setItem('lang', lang);
+
 
 
 let currentText = '';
@@ -43,42 +48,33 @@ let textBlock = document.getElementById('textBlock');
 mainContainer.insertAdjacentHTML("beforeend", 
     ` <div class='keyboardArea' id = 'keyboardBlock'></div>`
 );
+console.log('first run =>>> ')
+console.log('lang =>>> ' +lang)
+console.log('shift =>>> ' +shiftPressed)
+console.log('caps =>>> ' +capsPressed)
 
 butExist = MakeKbd(lang, shiftPressed, capsPressed);
 
-/*let keyboardBlock = document.getElementById('keyboardBlock');
-//=================================================Make Kbd=================================================
-for(let i=0; i<keyboard.length; i++) {
-keyboardBlock.insertAdjacentHTML("beforeend",Button('button',keyboard[i].id,keyboard[i].shiftEn,keyboard[i].en));
-}
-let button = document.querySelectorAll('.button');
-console.log(' numbers butt =>'+button.length);
-for(let i=0; i<button.length; i++){
-    button[i].style.cssText += `grid-row: ${keyboard[i].row}/${keyboard[i].row+1}`;
-    button[i].addEventListener('click',()=>{
-        console.log('button id =>'+button[i].id);
-        textBlock.value += keyboard[button[i].id-1].en;
-    })
-}
 
-//=====================================================================================================
-*/
 
 
 let shiftCounter = 0;
 
-document.onkeydown =(e) =>{
+/*document.onkeydown =(e) =>{
     console.log('key code = > '+ e.code);
-    lang = langTest(e.key, lang);
+    //lang = langTest(e.key, lang);
     if(e.shiftKey){
         console.log('shift pressed')
-    butExist = MakeKbd(lang,true);
+        shiftPressed = true;
+    butExist = MakeKbd(lang,shiftPressed, capsPressed);
     };
     
 
-}
+}*/
 
 document.onkeyup =(e) => { // =========== then key pull)up =============
+    
+
     lang = langTest(e.key, lang);
     for(let i = 0; i<butExist.length; i++ ){
         //console.log( butExist[i].classList[1]);
@@ -113,16 +109,9 @@ document.onkeydown = (e) => {
     // capsLock here
     if(e.key === 'CapsLock' && !capsPressed ){capsPressed = true;
         butExist = MakeKbd(lang,capsPressed); // TODO in module
-        
-        
-
-
 
     }else{capsPressed = false;
        butExist = MakeKbd(lang,capsPressed); 
-
-       
-
 
     }
     //============== capsLock end ==========================
@@ -148,7 +137,7 @@ document.onkeydown = (e) => {
     console.log ('caps =========================================> ' + caps);
 
     if(e.shiftKey && e.altKey){
-        lang = langTest(e.key, lang);
+        //lang = langTest(e.key, lang);
     console.log('We here ==========================');
     console.log('capsPressed =>' + capsPressed);
         if(lang === 'ru'){lang = 'en'
@@ -178,10 +167,14 @@ window.onload = () => {
     console.log('ct =>' + currentText);
     
     textBlock.value = localStorage.getItem('text');// get from local storage
-    localStorage.getItem('lang');
+    lang = localStorage.getItem('lang');
+
+    console.log('get from LS after onload =>'+lang);
+
+    //shiftPressed = localStorage.getItem('shift');
+    //capsPressed = localStorage.getItem('caps');
     console.log(lang);
-    console.log('lang =>'+window.navigator.language);
-    console.log(document.getElementsByTagName("html")[0].getAttribute("lang"));
+    //butExist = MakeKbd(lang);
 
     
 }

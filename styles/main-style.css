@@ -1,16 +1,9 @@
-.examp{
-
-color: red;
-
-}
-
 .textArea{
     margin: 0;
     padding: 0;
     width: 100%;
     height: 15vw;
     color: black;
-    border: 1px solid black;
     resize:unset;
     font-size: 2vw;
 }
@@ -31,7 +24,6 @@ color: red;
     padding: 0;
     width: 100%;
     height: 30vmin;
-    border: 1px solid yellowgreen;
 }
 
 
@@ -87,17 +79,17 @@ font-size: 0.6em;
 
 }
 
-.Shift43{
+.ShiftLeft{
     grid-column: 1/3;
 }
 
-.Shift55{
+.ShiftRight{
     grid-column: 14/16;
 }
 
 
 
-.space{
+.Space{
     grid-column: 4/10;
 }
 
