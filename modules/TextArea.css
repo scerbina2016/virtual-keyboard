@@ -1,0 +1,6 @@
+.textArea{
+    width: 80vw;
+    height: 30vh;
+    color: red;
+    border: 1px dotted green;
+}
