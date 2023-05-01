@@ -114,14 +114,10 @@ document.onkeydown =(e) =>{
     }
 
     // capsLock here
-    /*if(e.key === 'CapsLock' && !capsPressed ){capsPressed = true;
+    if(e.key === 'CapsLock'){capsPressed = !capsPressed;
         butExist = MakeKbd(lang,capsPressed); // TODO in module
 
-    }else{capsPressed = false;
-    butExist = MakeKbd(lang,capsPressed); 
-
     }
-    //============== capsLock end ==========================*/
-
+    //============== capsLock end ==========================
 }
 
